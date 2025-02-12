@@ -10,4 +10,75 @@ body {
   /* #679267 */
 }
 
+footer {
+  color: #eaddca;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  opacity: 0.8;
+}
 
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+/* ------ CUPBOARD STYLES ------ */
+
+.cupboard {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-around;
+  column-gap: 10px;
+  row-gap: 10px;
+  height: 200px;
+  border: 2px solid #6b5738;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 3px;
+}
+
+/* ------ MODAL STYLES ------ */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  overflow: auto;
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-content {
+  background: #679267;
+  position: fixed;
+  left: 25%;
+  top: 25%;
+  padding: 30px;
+  height: 50%;
+  width: 50%;
+}
+
+.close {
+  color: inherit;
+  cursor: pointer;
+  float: right;
+  font-size: 28px;
+  border: none;
+  background: transparent;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* .vl {
+  border-left: 3px solid #6b5738;
+  height: 200px;
+} */
