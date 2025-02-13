@@ -53,14 +53,14 @@ input {
 .cupboard {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  justify-content: space-around;
-  column-gap: 10px;
-  row-gap: 10px;
-  height: 200px;
-  border: 2px solid #6b5738;
+  /* justify-content: space-around; */
+  /* column-gap: 10px; */
+  /* row-gap: 10px; */
+  height: 50dvh;
+  border: 2.5px solid #6b5738;
   margin-top: 2%;
   margin-bottom: 2%;
-  border-radius: 3px;
+  border-radius: 10px;
   position: relative;
 }
 
@@ -73,6 +73,31 @@ input {
   background-color: #6b5738;
   transform: translateY(-50%);
 }
+
+/* ------ TEA STYLES ------ */
+
+.tea-item {
+  background-color: rgba(87, 108, 87, 0.332);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 3px;
+
+}
+
+.tea-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.delete-tea-btn{
+
+   color: inherit;
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+}
+
 
 /* ------ MODAL STYLES ------ */
 

@@ -4,7 +4,7 @@
 const createBtn = document.getElementById("createBtn");
 // make sure the create btn exists before putting an event listener on it
 if (createBtn) {
-  addEventListener("click", createCupboard);
+  createBtn.addEventListener("click", createCupboard);
 }
 
 function createCupboard() {
@@ -59,7 +59,7 @@ window.addEventListener("load", function () {
   });
 });
 
-//
+
 // display the teas in the cupboard
 
 
@@ -73,11 +73,31 @@ function displayTeas(){
   // clear the cupboard before adding items
   cupboard.innerHTML = "";
 
-  myTeas.forEach((tea) => {
+  myTeas.forEach((tea, index) => {
     // create a new div 
     const teaDiv = document.createElement("div");
+    // add a css class
+    teaDiv.classList.add("tea-item");
     // set its text to the tea name 
     teaDiv.textContent = tea; 
+
+     // remove tea functionality 
+    const deleteTea = document.createElement("button");
+    deleteTea.textContent = "X"; // add an x symbol 
+    deleteTea.classList.add("delete-tea-btn"); 
+
+
+    deleteTea.addEventListener("click", () => {
+      // remove the clicked tea from the array
+      myTeas.splice(index, 1); 
+      // update local storage 
+      localStorage.setItem("myTeas", JSON.stringify(myTeas));
+      // refresh the UI 
+      displayTeas();
+    })
+
+    // append delete btn to the tea div 
+    teaDiv.appendChild(deleteTea)
     // append it to the cupboard 
     cupboard.appendChild(teaDiv);
   })
@@ -86,10 +106,8 @@ function displayTeas(){
 // display teas when the page loads 
 displayTeas();
 
-//
+
 // add a tea functionality
-
-
 
 const SubmitNewTea = document.getElementById("SubmitNewTea");
 // console.log("SubmitNewTea", SubmitNewTea)
@@ -101,6 +119,10 @@ if (SubmitNewTea) {
 function addNewTea(){
   const teaName = document.getElementById("NewTea").value;
   console.log("Adding New Tea:", teaName)
+
+  // avoid adding empty teas
+  if (!teaName) return;
+
   // add tea to the array of teas with the push method
   myTeas.push(teaName)
   console.log("My Teas: ", myTeas)
@@ -109,6 +131,8 @@ function addNewTea(){
   // & store in local storage 
   console.log("storing teas in local storage")
   localStorage.setItem("myTeas", JSON.stringify(myTeas))
+
+  displayTeas();
  }
 
 
