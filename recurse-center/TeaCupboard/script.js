@@ -59,12 +59,37 @@ window.addEventListener("load", function () {
   });
 });
 
+//
+// display the teas in the cupboard
+
+
+// retrieve the array if it exists or create an empty one 
+// access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
+let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
+
+function displayTeas(){
+  // select the cupboard section 
+  const cupboard = document.querySelector(".cupboard");
+  // clear the cupboard before adding items
+  cupboard.innerHTML = "";
+
+  myTeas.forEach((tea) => {
+    // create a new div 
+    const teaDiv = document.createElement("div");
+    // set its text to the tea name 
+    teaDiv.textContent = tea; 
+    // append it to the cupboard 
+    cupboard.appendChild(teaDiv);
+  })
+}
+
+// display teas when the page loads 
+displayTeas();
+
+//
 // add a tea functionality
 
-// retrieve the array if it exists
-//access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
 
-let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
 
 const SubmitNewTea = document.getElementById("SubmitNewTea");
 // console.log("SubmitNewTea", SubmitNewTea)
