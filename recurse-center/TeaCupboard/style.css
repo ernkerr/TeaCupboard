@@ -5,10 +5,11 @@ body {
   flex-direction: column;
   min-height: 100dvh;
   background-color: #679267;
-  /* #49796B */
-  /* #4f7942 */
-  /* #679267 */
 }
+
+/* #49796B */
+/* #4f7942 */
+/* #679267 */
 
 footer {
   color: #eaddca;
@@ -22,6 +23,29 @@ footer {
 h1 {
   display: flex;
   justify-content: center;
+}
+
+input {
+  color: #679267e1;
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  width: 200px;
+}
+
+.createBtn {
+  color: #679267e1;
+  border: 2px solid #679267e1;
+  padding: 7px;
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  width: 100px;
+  cursor: pointer;
+}
+
+.name {
+  text-transform: capitalize;
 }
 
 /* ------ CUPBOARD STYLES ------ */

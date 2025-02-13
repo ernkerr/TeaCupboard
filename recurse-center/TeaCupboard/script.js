@@ -5,12 +5,39 @@
 // the second parameter is the function we want to call when the event ccurs
 // third parameter is optional
 
-// document.getElementById("myBtn").addEventListener("click", myCollection);
+// create new cupboard
 
-// function myCollection() {
-//   console.log("Navigating to MyTeaCupboard.html");
-//   window.location.href = "MyTeaCupboard.html"; // Redirects to MyTeaCupboard.html
-// }
+// retrieve name from user
+const createBtn = document.getElementById("createBtn");
+// make sure the create btn exists before putting an event listener on it
+if (createBtn) {
+  addEventListener("click", createCupboard);
+}
+
+function createCupboard() {
+  const cupboardName = document.getElementById("cupboardName").value;
+
+  if (cupboardName) {
+    // store the name in local storage
+    localStorage.setItem("cupboardName", cupboardName);
+    // navigate to new html page
+    window.location.href = "newTeaCupboard.html";
+  }
+}
+
+// use name in newTeaCupboard.html
+// check if we're on newTeaCupboard.html before calling onPageLoad
+if (window.location.pathname.includes("newTeaCupboard.html")) {
+  window.addEventListener("load", onPageLoad);
+}
+
+function onPageLoad() {
+  // get name from local storage
+  const cupboardName = localStorage.getItem("cupboardName");
+
+  // set cupboard name to the name stored locally
+  document.getElementById("cupboardNameDisplay").innerText = cupboardName;
+}
 
 // open modal by id
 function openModal(id) {
