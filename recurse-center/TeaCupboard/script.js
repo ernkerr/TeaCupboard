@@ -1,10 +1,3 @@
-// add event listener method attaches an event handler to an element
-// we can add multiple event handleres to the same elemnt (ex: two "click" events)
-
-// the first parameter "click" is the type of event
-// the second parameter is the function we want to call when the event ccurs
-// third parameter is optional
-
 // create new cupboard
 
 // retrieve name from user
@@ -65,3 +58,57 @@ window.addEventListener("load", function () {
     }
   });
 });
+
+// add a tea functionality
+
+// retrieve the array if it exists
+//access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
+
+let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
+
+const SubmitNewTea = document.getElementById("SubmitNewTea");
+// console.log("SubmitNewTea", SubmitNewTea)
+// make sure the submitNewTea btn exists before putting an event listener on it
+if (SubmitNewTea) {
+  SubmitNewTea.addEventListener("click", addNewTea);
+}
+
+function addNewTea(){
+  const teaName = document.getElementById("NewTea").value;
+  console.log("Adding New Tea:", teaName)
+  // add tea to the array of teas with the push method
+  myTeas.push(teaName)
+  console.log("My Teas: ", myTeas)
+
+  // convert the array into a string using JSON.stringify() method
+  // & store in local storage 
+  console.log("storing teas in local storage")
+  localStorage.setItem("myTeas", JSON.stringify(myTeas))
+ }
+
+
+
+
+
+ // const teas = [
+//   "Black Tea",
+//   "White Tea",
+//   "Green Tea",
+//   "English Breakfast",
+//   "Chamomile",
+//   "Mint",
+//   "Oolong",
+//   "Earl Grey",
+//   "Lady Grey",
+//   "Darjeeling",
+//   "Matcha",
+//   "Chai",
+// ];
+
+
+// add event listener method attaches an event handler to an element
+// we can add multiple event handleres to the same elemnt (ex: two "click" events)
+
+// the first parameter "click" is the type of event
+// the second parameter is the function we want to call when the event ccurs
+// third parameter is optional
