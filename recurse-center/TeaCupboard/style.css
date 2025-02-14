@@ -52,7 +52,8 @@ input {
 
 .cupboard {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  /* grid-template-columns: auto auto auto auto; */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
   /* justify-content: space-around; */
   /* column-gap: 10px; */
   /* row-gap: 10px; */
@@ -81,21 +82,42 @@ input {
   border-radius: 10px;
   padding: 10px;
   margin: 3px;
-
+  max-height: 150px;
+  max-width: 200px;
 }
 
 .tea-item:hover {
   transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-.delete-tea-btn{
+.tea-item:hover .delete-tea-btn {
+  opacity: 1;
+}
 
-   color: inherit;
+.tea-item img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.tea-item .delete-tea-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: inherit;
   cursor: pointer;
   float: right;
   font-size: 20px;
   border: none;
   background: transparent;
+  opacity: 0; 
+}
+
+/* only show delete button when hovering over a tea item */
+.tea-item:hover .delete-tea-btn {
+  opacity: 1;
 }
 
 

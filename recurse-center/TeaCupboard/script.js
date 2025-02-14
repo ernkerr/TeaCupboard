@@ -8,6 +8,7 @@ const teaCharacters = {
   "oolong tea": "oolongTea.jpg",
   oolong: "oolong.jpg",
   matcha: "matcha.jpg",
+  "chamomile tea": "chamomile.png",
   chamomile: "chamomile.png",
   "english breakfast": "englishBreakfast.jpg",
   breakfast: "englishBreakfast.jpg",
@@ -115,7 +116,6 @@ function displayTeas(){
       const img = document.createElement("img");
       img.src = imgsrc;
       img.alt = tea;
-      img.style.width = "100px";
       teaDiv.appendChild(img)
     }
 
