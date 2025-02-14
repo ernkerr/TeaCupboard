@@ -9,29 +9,53 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
-    <header>
-      <h1>The Tea Cupboard</h1>
-    </header>
-    <main>
-      <p>Your Virtual Tea Collection</p>
-      <p>A better way to keep track of your teas</p>
-      <!-- <a href="myTeaCupboard.html"
-        ><button id="myBtn">View My Collection</button></a
-      > -->
+      <header>
+        <h1>Welcome to Your Tea Cupboard</h1>
+        <h2>A better way to track your teas</h2>
+        <a href="newUser.html"
+          ><button class="cta-btn" id="newBtn">Create Your Cupboard</button></a
+        >
+      </header>
+      <main>
+        <section>
+          <div class="card">
+            <i class="fa-solid fa-mug-hot icon"></i>
+            <h3>Track Your Collection</h3>
+            <p>Keep track of all your favorite teas in one organized space</p>
+          </div>
 
+          <div class="card">
+            <i class="fa-regular fa-bookmark icon"></i>
+            <h3>Tea Characters</h3>
+            <p>Collect unique tea characters as you explore new varieties</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-brands fa-pagelines icon"></i>
+            <h3>Share & Connect</h3>
+            <p>Share your collection with friends and tea enthusiasts</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <section>
+      <h2>Start Your Tea Journey Today</h2>
+      <h4>Track, organize, and discover your perfect cup</h4>
       <a href="newUser.html"
-        ><button id="newBtn">Create New Collection</button></a
+        ><button class="cta-btn" id="newBtn">Try It Out</button></a
       >
-    </main>  
-  </div>
+    </section>
     <footer>
-      <hr width="100%" size="1" color="#eaddca" />
+      <hr width="100%" size="1" color="#a0522d" />
       <p>My Tea Cupboard &copy; 2025</p>
     </footer>
     <script src="script.js"></script>
-
   </body>
 </html>
