@@ -5,69 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tea Cupboard</title>
     <link rel="stylesheet" href="style.css" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
     <header>
-      <h1>Your Tea Cupboard</h1>
+      <h1>The Tea Cupboard</h1>
     </header>
     <main>
+      <p>Your Virtual Tea Collection</p>
+      <p>A better way to keep track of your teas</p>
+      <a href="myTeaCupboard.html"
+        ><button id="myBtn">View My Collection</button></a
+      >
 
-      <!-- cupboard  -->
-      <section class="cupboard">
-        <!-- <div class="center-line"></div> -->
-        <div>    
-           <!-- tea one  -->
-          <button onclick="openModal('modal-1')">
-            <p id="teaOne"></p>
-          </button>
-    <!-- modal  -->
-          <div id="modal-1" class="modal">
-            <div class="modal-content">
-              <button class="close" onclick="closeModal()">&times;</button>
-              <p id="teaOne"></p>
-              <!-- <img src="blackTea.jpg" alt="tea character" height="100" width="auto"/> -->
-              <!-- <p>Steeping Information</p> -->
-    <!-- modal content  -->
-            </div>
-
-      </section>
-
-            <!-- new tea modal  -->
-            <!-- <button onclick="openModal('modal-1')">+ Add Tea</button> -->
-      
-            <!-- allow us to select a tea (ex: blacktea) -->
-             <!-- update the teaOne, or tea 2, etc. -->
-
-   
-       <!-- add tea functionality  -->
-      <form autocomplete="on">
-       <input type="text" id="NewTea" placeholder="Enter the Name of a Tea" />
-       <input type="submit" class="SubmitNewTea" id="SubmitNewTea" value="+ Add Tea" />
-      </form>
-      
-           
-
-      <!-- <hr width="100%" size="1" color="#eaddca" /> -->
-      <!-- <a href="index.html"><button>Go Back</button></a> -->
-    </main>
-</div>
+      <a href="newUser.html"
+        ><button id="newBtn">Create New Collection</button></a
+      >
+    </main>  
+  </div>
     <footer>
       <hr width="100%" size="1" color="#eaddca" />
-      <p>&copy; 2025 My Tea Cupboard</p>
+      <p>My Tea Cupboard &copy; 2025</p>
     </footer>
     <script src="script.js"></script>
+
   </body>
 </html>
-
-
-      <!-- modal  -->
-      <!-- <button onclick="openModal('modal-1')">Open Modal</button>
-
-      <div id="modal-1" class="modal">
-        <div class="modal-content">
-          <button class="close" onclick="closeModal()">&times;</button> -->
-<!-- modal content  -->
-        <!-- </div>
-      </div> -->

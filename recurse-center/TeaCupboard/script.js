@@ -5,18 +5,19 @@ const teaCharacters = {
   black: "blackTea.jpg",
   "white tea": "whiteTea.jpg",
   white: "whiteTea.jpg",
-  "oolong tea": "oolongTea.jpg",
+  "oolong tea": "oolong.jpg",
   oolong: "oolong.jpg",
-  matcha: "matcha.jpg",
   "chamomile tea": "chamomile.png",
   chamomile: "chamomile.png",
   "english breakfast": "englishBreakfast.jpg",
   breakfast: "englishBreakfast.jpg",
-  "mint": "mint.jpg",
+  "peppermint": "mint.jpg",
+  "mint tea": "mint.jpg",
   mint: "mint.jpg",
   "earl gray": "earlGray.jpg",
   "earl grey": "earlGray.jpg",
   earlgray: "earlGray.jpg",
+  "lady grey": "ladyGray.jpg",
   "lady gray": "ladyGray.jpg",
   ladygray: "ladyGray.jpg",
   "darjeeling": "darjeeling.jpg",
@@ -26,6 +27,10 @@ const teaCharacters = {
   chai: "chai.jpg",
   "chai tea": "chai.jpg",
 };
+
+
+
+
 
 // create new cupboard
 
@@ -54,11 +59,22 @@ if (window.location.pathname.includes("newTeaCupboard.html")) {
 }
 
 function onPageLoad() {
-  // get name from local storage
-  const cupboardName = localStorage.getItem("cupboardName");
+  const urlParams = new URLSearchParams(window.location.search);
+  let cupboardName = urlParams.get("name"); // try getting name from the url 
 
-  // set cupboard name to the name stored locally
-  document.getElementById("cupboardNameDisplay").innerText = cupboardName;
+  if (!cupboardName){  // if not found in url, fall back to local storage 
+   cupboardName = localStorage.getItem("cupboardName"); // get name from local storage
+  } else {
+    // if found in the URL, store it in local storage 
+    localStorage.setItem("cupboardName", cupboardName)
+  }
+
+  if (cupboardName){
+    // set cupboard name on html page 
+    document.getElementById("cupboardNameDisplay").innerText = cupboardName;
+  }
+
+    displayTeas();
 }
 
 // open modal by id
@@ -147,11 +163,11 @@ displayTeas();
 
 // add a tea functionality
 
-const SubmitNewTea = document.getElementById("SubmitNewTea");
-// console.log("SubmitNewTea", SubmitNewTea)
+const submitNewTea = document.getElementById("SubmitNewTea");
+
 // make sure the submitNewTea btn exists before putting an event listener on it
-if (SubmitNewTea) {
-  SubmitNewTea.addEventListener("click", addNewTea);
+if (submitNewTea) {
+  submitNewTea.addEventListener("click", addNewTea);
 }
 
 function addNewTea(){
@@ -172,6 +188,32 @@ function addNewTea(){
 
   displayTeas();
  }
+
+
+ // share btn 
+
+const shareBtn = document.getElementById("shareBtn");
+if (shareBtn) {
+  shareBtn.addEventListener("click", shareCupboard);
+}
+
+function shareCupboard(){
+  let cupboardName;
+  // if there is a cupBoard name in local storage use it
+  cupboardName = localStorage.getItem("cupboardName") || "The";
+  
+  const myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
+
+  const shareableLink = `${window.location.origin}/newTeaCupboard.html?name=${encodeURIComponent(cupboardName)}&teas=${encodeURIComponent(JSON.stringify(myTeas))}`;
+
+  // copy link to clipboard
+  navigator.clipboard.writeText(shareableLink).then(() => {
+    alert("Shareable link copied to clipboard!");
+  }).catch(err => console.error("Failed to copy:", err));
+}
+
+
+
 
 
 
