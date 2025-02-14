@@ -1,3 +1,31 @@
+const teaCharacters = {
+  "green tea": "greenTea.jpg",
+  green: "greenTea.jpg",
+  "black tea": "blackTea.jpg",
+  black: "blackTea.jpg",
+  "white tea": "whiteTea.jpg",
+  white: "whiteTea.jpg",
+  "oolong tea": "oolongTea.jpg",
+  oolong: "oolong.jpg",
+  matcha: "matcha.jpg",
+  chamomile: "chamomile.png",
+  "english breakfast": "englishBreakfast.jpg",
+  breakfast: "englishBreakfast.jpg",
+  "mint": "mint.jpg",
+  mint: "mint.jpg",
+  "earl gray": "earlGray.jpg",
+  "earl grey": "earlGray.jpg",
+  earlgray: "earlGray.jpg",
+  "lady gray": "ladyGray.jpg",
+  ladygray: "ladyGray.jpg",
+  "darjeeling": "darjeeling.jpg",
+  darjeeling: "darjeeling.jpg",
+  matcha: "matcha.jpg",
+  "matcha tea": "matcha.jpg",
+  chai: "chai.jpg",
+  "chai tea": "chai.jpg",
+};
+
 // create new cupboard
 
 // retrieve name from user
@@ -80,6 +108,16 @@ function displayTeas(){
     teaDiv.classList.add("tea-item");
     // set its text to the tea name 
     teaDiv.textContent = tea; 
+
+    // if a character exists append the img to the div 
+    const imgsrc = teaCharacters[tea.toLowerCase().trim()] || "whiteTea.jpg";
+    if (imgsrc) {
+      const img = document.createElement("img");
+      img.src = imgsrc;
+      img.alt = tea;
+      img.style.width = "100px";
+      teaDiv.appendChild(img)
+    }
 
      // remove tea functionality 
     const deleteTea = document.createElement("button");
