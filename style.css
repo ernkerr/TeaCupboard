@@ -58,6 +58,9 @@ input {
   padding: 15px;
   width: 300px;
   border-radius: 10px;
+  box-shadow: 0px 1px 1px hsl(0deg 0% 0% / 0.075),
+    0px 2px 2px hsl(0deg 0% 0% / 0.075), 0px 4px 4px hsl(0deg 0% 0% / 0.075),
+    0.5px 8px 8px hsl(0deg 0% 0% / 0.075);
 }
 
 input::placeholder {
@@ -179,10 +182,13 @@ a {
   border: 2px solid #a0522d;
   border-radius: 10px;
   display: block;
-  margin: 10px auto;
+  margin: 15px auto;
   padding: 15px;
   width: 300px;
   cursor: pointer;
+  box-shadow: 0px 1px 1px hsl(0deg 0% 0% / 0.075),
+    0px 2px 2px hsl(0deg 0% 0% / 0.075), 0px 4px 4px hsl(0deg 0% 0% / 0.075),
+    0.5px 8px 8px hsl(0deg 0% 0% / 0.075);
 }
 
 /* ------ TEA STYLES ------ */
@@ -228,6 +234,26 @@ a {
 /* only show delete button when hovering over a tea item */
 .tea-item:hover .delete-tea-btn {
   opacity: 1;
+}
+
+/* ------ BUTTON STYLES ------ */
+
+.btn {
+  color: #a0522d;
+  font-family: "Varela Round", serif;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  border: 2px solid #a0522d;
+  border-radius: 10px;
+  display: block;
+  /* margin: 10px auto; */
+  padding: 15px;
+  width: 150px;
+  cursor: pointer;
+  background-color: transparent;
+  box-shadow: 0px 1px 1px hsl(0deg 0% 0% / 0.075),
+    0px 2px 2px hsl(0deg 0% 0% / 0.075), 0px 4px 4px hsl(0deg 0% 0% / 0.075),
+    0.5px 8px 8px hsl(0deg 0% 0% / 0.075);
 }
 
 /* ------ MODAL STYLES ------ */
