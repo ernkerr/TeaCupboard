@@ -153,6 +153,9 @@ function addNewTea() {
   localStorage.setItem("myTeas", JSON.stringify(myTeas));
 
   displayTeas();
+
+  // clear the input field after adding the tea
+  document.getElementById("NewTea").value = "";
 }
 
 // share btn

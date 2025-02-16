@@ -1,28 +1,31 @@
+.varela-round-regular {
+  font-family: "Varela Round", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background-color: #eaddca;
-  font-family: sans-serif;
+  font-family: "Varela Round", serif;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
   color: #a0522d;
+  overflow-x: hidden;
 }
 
 /* #49796B */
 /* #4f7942 */
 /* #679267 */
 
-.container {
-  flex: 1;
-  padding-bottom: 50px;
-}
-
 footer {
   color: #a0522d;
-  /* color: #eaddca; */
   font-size: 12px;
   bottom: 0;
   width: 95%;
   opacity: 0.8;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 h1 {
@@ -45,26 +48,43 @@ h4 {
 }
 
 input {
-  color: #679267e1;
+  color: #a0522d;
+  font-family: "Varela Round", serif;
+  text-align: center;
+  font-size: 0.9em;
+  border: 2px solid #a0522d;
   display: block;
   margin: 10px auto;
-  padding: 8px;
-  width: 200px;
+  padding: 15px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+input::placeholder {
+  color: #a0522d;
 }
 
 a {
   text-decoration: none;
 }
 
+.container {
+  flex: 1;
+  padding-bottom: 50px;
+}
+
+/* ------ LANDING PAGE STYLES ------ */
+
 .cta-btn {
   color: white;
   border: none;
+  font-family: "Varela Round", serif;
+  letter-spacing: 0.05em;
   font-size: 0.9em;
   background-color: #a0522d;
   box-shadow: 0px 1px 1px hsl(0deg 0% 0% / 0.075),
     0px 2px 2px hsl(0deg 0% 0% / 0.075), 0px 4px 4px hsl(0deg 0% 0% / 0.075),
     0.5px 8px 8px hsl(0deg 0% 0% / 0.075);
-
   border-radius: 10px;
   padding: 15px;
   display: block;
@@ -89,15 +109,46 @@ a {
   padding-left: 5px;
 }
 
+.landing-img {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.built-by {
+  color: #a0522d;
+  padding: 5px;
+  margin-left: 1px;
+}
+
+.built-by:hover {
+  color: #eaddca;
+  background-color: #a0522d;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+/* ------ NEW USER STYLES ------ */
+
 .createBtn {
-  color: #679267e1;
-  border: 2px solid #679267e1;
-  padding: 7px;
+  color: white;
+  font-family: "Varela Round", serif;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  border: 2px solid #a0522d;
+  border-radius: 10px;
   display: block;
   margin: 10px auto;
-  padding: 8px;
-  width: 100px;
+  padding: 15px;
+  width: 300px;
   cursor: pointer;
+  background-color: #a0522d;
 }
 
 .name {
@@ -108,41 +159,41 @@ a {
 
 .cupboard {
   display: grid;
-  /* grid-template-columns: auto auto auto auto; */
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  /* justify-content: space-around; */
-  /* column-gap: 10px; */
-  /* row-gap: 10px; */
-  /* height: 50dvh; */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   min-height: 100px;
-  border: 2.5px solid #6b5738;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  width: 100%;
+  border: 2.5px solid #a0522d;
+
+  margin: 2% auto;
   border-radius: 10px;
   position: relative;
   overflow: auto;
 }
 
-.center-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #6b5738;
-  transform: translateY(-50%);
+.SubmitNewTea {
+  background-color: #a0522d;
+  color: white;
+  font-family: "Varela Round", serif;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  border: 2px solid #a0522d;
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto;
+  padding: 15px;
+  width: 300px;
+  cursor: pointer;
 }
 
 /* ------ TEA STYLES ------ */
 
 .tea-item {
-  background-color: rgba(87, 108, 87, 0.332);
   border-radius: 10px;
   padding: 10px;
   margin: 3px;
-
-  max-height: 150px;
-  max-width: 200px;
+  min-height: 150px;
+  max-height: 350px;
+  /* max-width: 400px; */
 }
 
 .tea-item:hover {
