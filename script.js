@@ -4,29 +4,16 @@ const teaCharacters = {
   white: "whiteTea.jpg",
   oolong: "oolong.jpg",
   chamomile: "chamomile.png",
-  "english breakfast": "englishBreakfast.jpg",
+  english: "englishBreakfast.jpg",
   mint: "mint.jpg",
-  "earl grey": "earlGray.jpg",
-  "lady grey": "ladyGray.jpg",
+  earl: "earlGray.jpg",
+  lady: "ladyGray.jpg",
   darjeeling: "darjeeling.jpg",
   matcha: "matcha.jpg",
   chai: "chai.jpg",
 };
 
-const totalCharacters = Object.keys(teaCharacters).length;
-
-if (totalCharacters) {
-  document.getElementById("totalCharacters").innerText = totalCharacters;
-}
-
-// num char
-// let numCharacters = 0;
-
-//     // set num characters on html page
-//     document.getElementById("numCharacters").innerText = numCharacters;
-
 // create new cupboard
-
 // retrieve name from user
 const createBtn = document.getElementById("createBtn");
 // make sure the create btn exists before putting an event listener on it
@@ -68,6 +55,15 @@ function onPageLoad() {
     document.getElementById("cupboardNameDisplay").innerText = cupboardName;
   }
 
+  // total characters
+  // object.keys is a built-in JavaScript function it takes an object as an argument(teaCharacters)
+  // it returns an array of keys "green", "white", etc.
+  const totalCharacters = Object.keys(teaCharacters).length;
+
+  if (totalCharacters) {
+    document.getElementById("totalCharacters").innerText = totalCharacters;
+  }
+
   displayTeas();
 }
 
@@ -94,13 +90,16 @@ function displayTeas() {
     // set its text to the tea name
     teaDiv.textContent = tea;
 
+    // handle "mint tea" in addition to "mint"
+    const firstWord = tea.toLowerCase().trim().split(" ")[0];
+
     // if tea exists in teaCharacters, count it
-    if (teaCharacters[tea.toLowerCase().trim()]) {
-      charactersFound.add(tea.toLowerCase().trim());
+    if (teaCharacters[firstWord]) {
+      charactersFound.add(firstWord);
     }
 
     // if a character exists append the img to the div
-    const imgsrc = teaCharacters[tea.toLowerCase().trim()] || "whiteTea.jpg";
+    const imgsrc = teaCharacters[firstWord] || "whiteTea.jpg";
     if (imgsrc) {
       const img = document.createElement("img");
       img.src = imgsrc;
@@ -132,12 +131,15 @@ function displayTeas() {
   document.getElementById("numCharacters").innerText = charactersFound.size;
 }
 
-// display teas when the page loads
-displayTeas();
+// // display teas when the page loads
+// displayTeas();
 
 // check if the enter key is pressed
 const newTeaInput = document.getElementById("NewTea");
-newTeaInput.addEventListener("keydown", checkEnter);
+
+if (newTeaInput) {
+  newTeaInput.addEventListener("keydown", checkEnter);
+}
 
 function checkEnter(event) {
   // check if the enter key is pressed
