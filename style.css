@@ -22,10 +22,11 @@ footer {
   color: #a0522d;
   font-size: 12px;
   bottom: 0;
-  width: 95%;
+  width: 100%;
   opacity: 0.8;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-right: 10px;
 }
 
 h1 {
@@ -172,7 +173,7 @@ a {
 .cupboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  min-height: 100px;
+  min-height: 200px;
   width: 100%;
   border: 2.5px solid #a0522d;
 
@@ -207,8 +208,8 @@ a {
   padding: 10px;
   margin: 3px;
   min-height: 150px;
-  max-height: 350px;
-  /* max-width: 400px; */
+  max-height: 250px;
+  max-width: 400px;
 }
 
 .tea-item:hover {
@@ -303,8 +304,3 @@ a {
 body.modal-open {
   overflow: hidden;
 }
-
-/* .vl {
-  border-left: 3px solid #6b5738;
-  height: 200px;
-} */
