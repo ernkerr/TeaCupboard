@@ -246,6 +246,10 @@ a {
   opacity: 1;
 }
 
+.confettiMessage {
+  font-size: 1em;
+}
+
 /* ------ BUTTON STYLES ------ */
 
 .btn {

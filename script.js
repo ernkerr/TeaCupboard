@@ -99,6 +99,7 @@ function displayTeas() {
       charactersFound.add(firstWord);
     }
 
+    // if the user finds all the characters, add confetti!
     if (charactersFound.size === totalCharacters) {
       confetti({
         particleCount: 300, // Number of confetti pieces
@@ -106,6 +107,8 @@ function displayTeas() {
         spread: 150, // Spread of the confetti
         origin: { y: 0.3 }, // Origin point for the confetti burst
       });
+      document.getElementById("confettiMessage").innerText =
+        "Congrats! You found all the characters!";
     }
 
     // if a character exists append the img to the div
