@@ -127,6 +127,15 @@ function displayTeas() {
 // display teas when the page loads
 displayTeas();
 
+// check if the enter key is pressed
+function checkEnter(event) {
+  // check if the enter key is pressed
+  if (event.key === "Enter") {
+    event.preventDefault(); // prevent the default behavior of the enter key
+    addNewTea();
+  }
+}
+
 // add a tea functionality
 
 const submitNewTea = document.getElementById("SubmitNewTea");
