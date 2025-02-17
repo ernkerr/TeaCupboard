@@ -11,6 +11,9 @@ const teaCharacters = {
   darjeeling: "darjeeling.jpg",
   matcha: "matcha.jpg",
   chai: "chai.jpg",
+  rooibos: "rooibos.jpg",
+  ginger: "ginger.jpg",
+  jasmine: "jasmine.jpg",
 };
 
 // create new cupboard
