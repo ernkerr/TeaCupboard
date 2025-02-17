@@ -80,7 +80,7 @@ a {
 
 .container {
   flex: 1;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 /* ------ LANDING PAGE STYLES ------ */
@@ -122,6 +122,8 @@ a {
 .landing-img {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .flex-row {
@@ -307,4 +309,49 @@ a {
 
 body.modal-open {
   overflow: hidden;
+}
+
+/* ------ MEDIA QUERIES ------ */
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  .cta-btn {
+    letter-spacing: 0.05em;
+    font-size: 1.4em;
+    padding: 20px;
+    margin: 30px auto;
+    cursor: pointer;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 700px;
+  }
+
+  .img-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .landing-img {
+    max-width: 800px;
+    margin-top: 40px;
+  }
 }
