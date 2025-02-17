@@ -58,24 +58,22 @@ function onPageLoad() {
     document.getElementById("cupboardNameDisplay").innerText = cupboardName;
   }
 
-  // total characters
-  // object.keys is a built-in JavaScript function it takes an object as an argument(teaCharacters)
-  // it returns an array of keys "green", "white", etc.
-  const totalCharacters = Object.keys(teaCharacters).length;
-
-  if (totalCharacters) {
-    document.getElementById("totalCharacters").innerText = totalCharacters;
-  }
-
   displayTeas();
 }
 
-// display the teas in the cupboard
+// display total tea characters
+const totalCharacters = Object.keys(teaCharacters).length; // object.keys is a built-in JavaScript function it takes an object as an argument(teaCharacters) it returns an array of keys "green", "white", etc.
+const totalCharactersDisplay = document.getElementById("totalCharacters");
+
+if (totalCharactersDisplay) {
+  totalCharactersDisplay.innerText = totalCharacters;
+}
 
 // retrieve the array if it exists or create an empty one
 // access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
 let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
 
+// display the teas in the cupboard
 function displayTeas() {
   // select the cupboard section
   const cupboard = document.querySelector(".cupboard");
@@ -99,6 +97,15 @@ function displayTeas() {
     // if tea exists in teaCharacters, count it
     if (teaCharacters[firstWord]) {
       charactersFound.add(firstWord);
+    }
+
+    if (charactersFound.size === totalCharacters) {
+      confetti({
+        particleCount: 300, // Number of confetti pieces
+        size: 10, // Size of the confetti pieces (default is 1)
+        spread: 150, // Spread of the confetti
+        origin: { y: 0.3 }, // Origin point for the confetti burst
+      });
     }
 
     // if a character exists append the img to the div
@@ -133,9 +140,6 @@ function displayTeas() {
   // update the character count display
   document.getElementById("numCharacters").innerText = charactersFound.size;
 }
-
-// // display teas when the page loads
-// displayTeas();
 
 // check if the enter key is pressed
 const newTeaInput = document.getElementById("NewTea");
