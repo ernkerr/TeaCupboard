@@ -1,32 +1,29 @@
 const teaCharacters = {
-  "green tea": "greenTea.jpg",
   green: "greenTea.jpg",
-  "black tea": "blackTea.jpg",
   black: "blackTea.jpg",
-  "white tea": "whiteTea.jpg",
   white: "whiteTea.jpg",
-  "oolong tea": "oolong.jpg",
   oolong: "oolong.jpg",
-  "chamomile tea": "chamomile.png",
   chamomile: "chamomile.png",
   "english breakfast": "englishBreakfast.jpg",
-  breakfast: "englishBreakfast.jpg",
-  peppermint: "mint.jpg",
-  "mint tea": "mint.jpg",
   mint: "mint.jpg",
-  "earl gray": "earlGray.jpg",
   "earl grey": "earlGray.jpg",
-  earlgray: "earlGray.jpg",
   "lady grey": "ladyGray.jpg",
-  "lady gray": "ladyGray.jpg",
-  ladygray: "ladyGray.jpg",
-  darjeeling: "darjeeling.jpg",
   darjeeling: "darjeeling.jpg",
   matcha: "matcha.jpg",
-  "matcha tea": "matcha.jpg",
   chai: "chai.jpg",
-  "chai tea": "chai.jpg",
 };
+
+const totalCharacters = Object.keys(teaCharacters).length;
+
+if (totalCharacters) {
+  document.getElementById("totalCharacters").innerText = totalCharacters;
+}
+
+// num char
+// let numCharacters = 0;
+
+//     // set num characters on html page
+//     document.getElementById("numCharacters").innerText = numCharacters;
 
 // create new cupboard
 
@@ -86,6 +83,9 @@ function displayTeas() {
   // clear the cupboard before adding items
   cupboard.innerHTML = "";
 
+  // count unique characters
+  let charactersFound = new Set(); // a set is a built in object that stores unique values
+
   myTeas.forEach((tea, index) => {
     // create a new div
     const teaDiv = document.createElement("div");
@@ -93,6 +93,11 @@ function displayTeas() {
     teaDiv.classList.add("tea-item");
     // set its text to the tea name
     teaDiv.textContent = tea;
+
+    // if tea exists in teaCharacters, count it
+    if (teaCharacters[tea.toLowerCase().trim()]) {
+      charactersFound.add(tea.toLowerCase().trim());
+    }
 
     // if a character exists append the img to the div
     const imgsrc = teaCharacters[tea.toLowerCase().trim()] || "whiteTea.jpg";
@@ -122,6 +127,9 @@ function displayTeas() {
     // append it to the cupboard
     cupboard.appendChild(teaDiv);
   });
+
+  // update the character count display
+  document.getElementById("numCharacters").innerText = charactersFound.size;
 }
 
 // display teas when the page loads

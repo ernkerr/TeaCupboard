@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tea Cupboard</title>
     <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
       rel="stylesheet"
     />
-        <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
@@ -21,10 +21,15 @@
     <div class="container">
       <header>
         <div class="flex-row">
-          <a href="index.html"><button class="btn">
-            <i class="fa-solid fa-arrow-left"></i>
-              Back</button></a>
-          <button class="btn" id="shareBtn">Share  <i class="fa-solid fa-share"></i></button>
+          <a href="index.html"
+            ><button class="btn">
+              <i class="fa-solid fa-arrow-left"></i>
+              Back
+            </button></a
+          >
+          <button class="btn" id="shareBtn">
+            Share <i class="fa-solid fa-share"></i>
+          </button>
         </div>
         <h1>
           <div class="name" id="cupboardNameDisplay"></div>
@@ -33,23 +38,26 @@
       </header>
 
       <main>
-        <section class="cupboard">
-
-        </section>
-            <form autocomplete="on"></form>
-            <input
-              type="text"
-              id="NewTea"
-              placeholder="Enter the Name of a Tea"
-            />
-            <input
-              type="submit"
-              class="SubmitNewTea"
-              id="SubmitNewTea"
-              value="+ Add Tea"
-            />
-          </form>
-
+        <section class="cupboard"></section>
+        <form autocomplete="on">
+          <input
+            type="text"
+            id="NewTea"
+            placeholder="Enter the Name of a Tea"
+          />
+          <input
+            type="submit"
+            class="SubmitNewTea"
+            id="SubmitNewTea"
+            value="+ Add Tea"
+          />
+        </form>
+        <h4>
+          <div class="numCharacters" id="numCharacters"></div>
+          /
+          <div class="totalCharacters" id="totalCharacters"></div>
+          &nbsp;characters found
+        </h4>
       </main>
     </div>
     <footer>
