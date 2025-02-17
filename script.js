@@ -128,6 +128,9 @@ function displayTeas() {
 displayTeas();
 
 // check if the enter key is pressed
+const newTeaInput = document.getElementById("NewTea");
+newTeaInput.addEventListener("keydown", checkEnter);
+
 function checkEnter(event) {
   // check if the enter key is pressed
   if (event.key === "Enter") {
