@@ -27,7 +27,6 @@ const teaCharacters = {
   chai: "/images/chai.jpg",
   "chai tea": "/images/chai.jpg",
 };
-
 // create new cupboard
 // retrieve name from user
 const createBtn = document.getElementById("createBtn");
@@ -71,6 +70,164 @@ function onPageLoad() {
   }
 
   displayTeas();
+}
+
+// display total tea characters
+const totalCharacters = Object.keys(teaCharacters).length; // object.keys is a built-in JavaScript function it takes an object as an argument(teaCharacters) it returns an array of keys "green", "white", etc.
+const totalCharactersDisplay = document.getElementById("totalCharacters");
+
+if (totalCharactersDisplay) {
+  totalCharactersDisplay.innerText = totalCharacters;
+}
+
+// retrieve the array if it exists or create an empty one
+// access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
+let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
+
+// display the teas in the cupboard
+function displayTeas() {
+  // select the cupboard section
+  const cupboard = document.querySelector(".cupboard");
+  // clear the cupboard before adding items
+  cupboard.innerHTML = "";
+
+  // count unique characters
+  let charactersFound = new Set(); // a set is a built in object that stores unique values
+
+  myTeas.forEach((tea, index) => {
+    // create a new div
+    const teaDiv = document.createElement("div");
+    // add a css class
+    teaDiv.classList.add("tea-item");
+    // set its text to the tea name
+    teaDiv.textContent = tea;
+
+    // handle "mint tea" in addition to "mint"
+    const firstWord = tea.toLowerCase().trim().split(" ")[0];
+
+    // if tea exists in teaCharacters, count it
+    if (teaCharacters[firstWord]) {
+      charactersFound.add(firstWord);
+    }
+
+    // if the user finds all the characters, add confetti!
+    if (charactersFound.size === totalCharacters) {
+      confetti({
+        particleCount: 300, // Number of confetti pieces
+        size: 10, // Size of the confetti pieces (default is 1)
+        spread: 150, // Spread of the confetti
+        origin: { y: 0.3 }, // Origin point for the confetti burst
+      });
+      document.getElementById("confettiMessage").innerText =
+        "Congrats! You found all the characters!";
+    }
+
+    // if a character exists append the img to the div
+    const imgsrc = teaCharacters[firstWord] || "whiteTea.jpg";
+    if (imgsrc) {
+      const img = document.createElement("img");
+      img.src = imgsrc;
+      img.alt = tea;
+      teaDiv.appendChild(img);
+    }
+
+    // remove tea functionality
+    const deleteTea = document.createElement("button");
+    deleteTea.textContent = "X"; // add an x symbol
+    deleteTea.classList.add("delete-tea-btn");
+
+    deleteTea.addEventListener("click", () => {
+      // remove the clicked tea from the array
+      myTeas.splice(index, 1);
+      // update local storage
+      localStorage.setItem("myTeas", JSON.stringify(myTeas));
+      // refresh the UI
+      displayTeas();
+    });
+
+    // append delete btn to the tea div
+    teaDiv.appendChild(deleteTea);
+    // append it to the cupboard
+    cupboard.appendChild(teaDiv);
+  });
+
+  // update the character count display
+  document.getElementById("numCharacters").innerText = charactersFound.size;
+}
+
+// check if the enter key is pressed
+const newTeaInput = document.getElementById("NewTea");
+
+if (newTeaInput) {
+  newTeaInput.addEventListener("keydown", checkEnter);
+}
+
+function checkEnter(event) {
+  // check if the enter key is pressed
+  if (event.key === "Enter") {
+    event.preventDefault(); // prevent the default behavior of the enter key
+    addNewTea();
+  }
+}
+
+// add a tea functionality
+
+const submitNewTea = document.getElementById("SubmitNewTea");
+
+// make sure the submitNewTea btn exists before putting an event listener on it
+if (submitNewTea) {
+  submitNewTea.addEventListener("click", addNewTea);
+}
+
+function addNewTea() {
+  const teaName = document.getElementById("NewTea").value;
+  console.log("Adding New Tea:", teaName);
+
+  // avoid adding empty teas
+  if (!teaName) return;
+
+  // add tea to the array of teas with the push method
+  myTeas.push(teaName);
+  console.log("My Teas: ", myTeas);
+
+  // convert the array into a string using JSON.stringify() method
+  // & store in local storage
+  console.log("storing teas in local storage");
+  localStorage.setItem("myTeas", JSON.stringify(myTeas));
+
+  displayTeas();
+
+  // clear the input field after adding the tea
+  document.getElementById("NewTea").value = "";
+}
+
+// share btn
+
+const shareBtn = document.getElementById("shareBtn");
+if (shareBtn) {
+  shareBtn.addEventListener("click", shareCupboard);
+}
+
+function shareCupboard() {
+  let cupboardName;
+  // if there is a cupBoard name in local storage use it
+  cupboardName = localStorage.getItem("cupboardName") || "The";
+
+  const myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
+
+  const shareableLink = `${
+    window.location.origin
+  }/newTeaCupboard.html?name=${encodeURIComponent(
+    cupboardName
+  )}&teas=${encodeURIComponent(JSON.stringify(myTeas))}`;
+
+  // copy link to clipboard
+  navigator.clipboard
+    .writeText(shareableLink)
+    .then(() => {
+      alert("Shareable link copied to clipboard!");
+    })
+    .catch((err) => console.error("Failed to copy:", err));
 }
 
 // open modal by id
