@@ -5,14 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Cupboard</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>New Tea Cupboard</h1>
-    <input type="text" id="cupboardName" placeholder="Please Enter A Name" />
+    <div class="container">
+      <h1>New Tea Cupboard</h1>
+      <input type="text" id="cupboardName" placeholder="Please Enter A Name" />
 
-    <!-- this btn will store name in local storage & navigate to a new html page -->
-    <button class="createBtn" id="createBtn">Create</button>
+      <!-- this btn will store name in local storage & navigate to a new html page -->
+      <button class="createBtn" id="createBtn">Create</button>
 
-    <script src="script.js"></script>
+      <script src="script.js"></script>
+    </div>
+    <footer>
+      <hr width="100%" size="1" color="#a0522d" />
+      <div class="flex-row">
+        <p>My Tea Cupboard &copy; 2025</p>
+        <div class="flex-row">
+          <p>built by</p>
+          <a href="https://www.erinkerr.me"
+            ><p class="built-by">Erin Kerr</p></a
+          >
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

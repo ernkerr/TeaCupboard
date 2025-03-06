@@ -5,33 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tea Cupboard</title>
     <link rel="stylesheet" href="style.css" />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
       rel="stylesheet"
+    /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
   </head>
   <body>
     <div class="container">
-    <header>
-      <h1>The Tea Cupboard</h1>
-    </header>
-    <main>
-      <p>Your Virtual Tea Collection</p>
-      <p>A better way to keep track of your teas</p>
-      <!-- <a href="myTeaCupboard.html"
-        ><button id="myBtn">View My Collection</button></a
-      > -->
+      <header>
+        <h1>Welcome to Your Tea Cupboard</h1>
+        <h2>A better way to track your teas</h2>
+        <a href="newUser.html"
+          ><button class="cta-btn" id="newBtn">Create Your Cupboard</button></a
+        >
+      </header>
+      <main>
+        <section class="card-container">
+          <div class="card">
+            <i class="fa-solid fa-mug-hot icon"></i>
+            <h3>Track Your Collection</h3>
+            <p>Keep track of all your favorite teas in one organized space</p>
+          </div>
 
-      <a href="newUser.html"
-        ><button id="newBtn">Create New Collection</button></a
-      >
-    </main>  
-  </div>
+          <div class="card">
+            <i class="fa-regular fa-bookmark icon"></i>
+            <h3>Tea Characters</h3>
+            <p>Collect unique tea characters as you explore new varieties</p>
+          </div>
+
+          <div class="card">
+            <i class="fa-brands fa-pagelines icon"></i>
+            <h3>Share & Connect</h3>
+            <p>Share your collection with friends and tea enthusiasts</p>
+          </div>
+          <img
+            class="landing-img"
+            src="chai.jpg"
+            alt="tea cup"
+            height="auto"
+            width="100%"
+          />
+        </section>
+        <section>
+          <h2>Start Your Tea Journey Today</h2>
+          <h4>Track, organize, and discover your perfect cup</h4>
+          <a href="newUser.html"
+            ><button class="cta-btn" id="newBtn">Try It Out</button></a
+          >
+        </section>
+      </main>
+    </div>
+
     <footer>
-      <hr width="100%" size="1" color="#eaddca" />
-      <p>My Tea Cupboard &copy; 2025</p>
+      <hr width="100%" size="1" color="#a0522d" />
+      <div class="flex-row">
+        <p>My Tea Cupboard &copy; 2025</p>
+        <div class="flex-row">
+          <p>built by</p>
+          <a href="https://www.erinkerr.me"
+            ><p class="built-by">Erin Kerr</p></a
+          >
+        </div>
+      </div>
     </footer>
     <script src="script.js"></script>
-
   </body>
 </html>

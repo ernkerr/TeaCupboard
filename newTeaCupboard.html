@@ -5,34 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tea Cupboard</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
   </head>
 
   <body>
     <div class="container">
-    <header>
-      <h1>
-        <div class="name" id="cupboardNameDisplay"></div>
-        's Tea Cupboard
-      </h1>
-    </header>
+      <header>
+        <div class="flex-row">
+          <a href="index.html"
+            ><button class="btn">
+              <i class="fa-solid fa-arrow-left"></i>
+              Back
+            </button></a
+          >
+          <button class="btn" id="shareBtn">
+            Share <i class="fa-solid fa-share"></i>
+          </button>
+        </div>
+        <h1>
+          <div class="name" id="cupboardNameDisplay"></div>
+          's Tea Cupboard
+        </h1>
+      </header>
 
-    <main>
-      <section class="cupboard">
-<form autocomplete="on">
-  <input type="text" id="NewTea" placeholder="Enter the Name of a Tea">
-  <input ype="submit" class="SubmitNewTea" id="SubmitNewTea" value="+ Add Tea">
-</form>
-
-      </section>
-
-      <a href="index.html"><button>Go Back</button></a>
-      <button id="shareBtn">Share Cupboard</button>
-
-    </main>
-  </div>
+      <main>
+        <section class="cupboard"></section>
+        <form autocomplete="on">
+          <input
+            type="text"
+            id="NewTea"
+            placeholder="Enter the Name of a Tea"
+          />
+          <input
+            type="submit"
+            class="SubmitNewTea"
+            id="SubmitNewTea"
+            value="+ Add Tea"
+          />
+        </form>
+        <h4>
+          <div class="numCharacters" id="numCharacters"></div>
+          /
+          <div class="totalCharacters" id="totalCharacters"></div>
+          &nbsp;characters found
+        </h4>
+        <h4 id="confettiMessage" class="confettiMessage"></h4>
+      </main>
+    </div>
     <footer>
-      <hr width="100%" size="1" color="#eaddca" />
-      <p>&copy; 2025 My Tea Cupboard</p>
+      <hr width="100%" size="1" color="#a0522d" />
+      <div class="flex-row">
+        <p>My Tea Cupboard &copy; 2025</p>
+        <div class="flex-row">
+          <p>built by</p>
+          <a href="https://www.erinkerr.me"
+            ><p class="built-by">Erin Kerr</p></a
+          >
+        </div>
+      </div>
     </footer>
     <script src="script.js"></script>
   </body>
