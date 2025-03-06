@@ -1,36 +1,32 @@
 const teaCharacters = {
-  "green tea": "greenTea.jpg",
-  green: "greenTea.jpg",
-  "black tea": "blackTea.jpg",
-  black: "blackTea.jpg",
-  "white tea": "whiteTea.jpg",
-  white: "whiteTea.jpg",
-  "oolong tea": "oolong.jpg",
-  oolong: "oolong.jpg",
-  "chamomile tea": "chamomile.png",
-  chamomile: "chamomile.png",
-  "english breakfast": "englishBreakfast.jpg",
-  breakfast: "englishBreakfast.jpg",
-  "peppermint": "mint.jpg",
-  "mint tea": "mint.jpg",
-  mint: "mint.jpg",
-  "earl gray": "earlGray.jpg",
-  "earl grey": "earlGray.jpg",
-  earlgray: "earlGray.jpg",
-  "lady grey": "ladyGray.jpg",
-  "lady gray": "ladyGray.jpg",
-  ladygray: "ladyGray.jpg",
-  "darjeeling": "darjeeling.jpg",
-  darjeeling: "darjeeling.jpg",
-  matcha: "matcha.jpg",
-  "matcha tea": "matcha.jpg",
-  chai: "chai.jpg",
-  "chai tea": "chai.jpg",
+  "green tea": "/images/greenTea.jpg",
+  green: "/images/greenTea.jpg",
+  "black tea": "/images/blackTea.jpg",
+  black: "/images/blackTea.jpg",
+  "white tea": "/images/whiteTea.jpg",
+  white: "/images/whiteTea.jpg",
+  "oolong tea": "/images/oolong.jpg",
+  oolong: "/images/oolong.jpg",
+  "chamomile tea": "/images/chamomile.png",
+  chamomile: "/images/chamomile.png",
+  "english breakfast": "/images/englishBreakfast.jpg",
+  breakfast: "/images/englishBreakfast.jpg",
+  peppermint: "/images/mint.jpg",
+  "mint tea": "/images/mint.jpg",
+  mint: "/images/mint.jpg",
+  "earl gray": "/images/earlGray.jpg",
+  "earl grey": "/images/earlGray.jpg",
+  earlgray: "/images/earlGray.jpg",
+  "lady grey": "/images/ladyGray.jpg",
+  "lady gray": "/images/ladyGray.jpg",
+  ladygray: "/images/ladyGray.jpg",
+  darjeeling: "/images/darjeeling.jpg",
+  darjeeling: "/images/darjeeling.jpg",
+  matcha: "/images/matcha.jpg",
+  "matcha tea": "/images/matcha.jpg",
+  chai: "/images/chai.jpg",
+  "chai tea": "/images/chai.jpg",
 };
-
-
-
-
 
 // create new cupboard
 
@@ -60,21 +56,22 @@ if (window.location.pathname.includes("newTeaCupboard.html")) {
 
 function onPageLoad() {
   const urlParams = new URLSearchParams(window.location.search);
-  let cupboardName = urlParams.get("name"); // try getting name from the url 
+  let cupboardName = urlParams.get("name"); // try getting name from the url
 
-  if (!cupboardName){  // if not found in url, fall back to local storage 
-   cupboardName = localStorage.getItem("cupboardName"); // get name from local storage
+  if (!cupboardName) {
+    // if not found in url, fall back to local storage
+    cupboardName = localStorage.getItem("cupboardName"); // get name from local storage
   } else {
-    // if found in the URL, store it in local storage 
-    localStorage.setItem("cupboardName", cupboardName)
+    // if found in the URL, store it in local storage
+    localStorage.setItem("cupboardName", cupboardName);
   }
 
-  if (cupboardName){
-    // set cupboard name on html page 
+  if (cupboardName) {
+    // set cupboard name on html page
     document.getElementById("cupboardNameDisplay").innerText = cupboardName;
   }
 
-    displayTeas();
+  displayTeas();
 }
 
 // open modal by id
@@ -104,62 +101,58 @@ window.addEventListener("load", function () {
   });
 });
 
-
 // display the teas in the cupboard
 
-
-// retrieve the array if it exists or create an empty one 
+// retrieve the array if it exists or create an empty one
 // access the string value from the localStorage and use the JSON.parse() method to parse the string and convert it back to an array
 let myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
 
-function displayTeas(){
-  // select the cupboard section 
+function displayTeas() {
+  // select the cupboard section
   const cupboard = document.querySelector(".cupboard");
   // clear the cupboard before adding items
   cupboard.innerHTML = "";
 
   myTeas.forEach((tea, index) => {
-    // create a new div 
+    // create a new div
     const teaDiv = document.createElement("div");
     // add a css class
     teaDiv.classList.add("tea-item");
-    // set its text to the tea name 
-    teaDiv.textContent = tea; 
+    // set its text to the tea name
+    teaDiv.textContent = tea;
 
-    // if a character exists append the img to the div 
+    // if a character exists append the img to the div
     const imgsrc = teaCharacters[tea.toLowerCase().trim()] || "whiteTea.jpg";
     if (imgsrc) {
       const img = document.createElement("img");
       img.src = imgsrc;
       img.alt = tea;
-      teaDiv.appendChild(img)
+      teaDiv.appendChild(img);
     }
 
-     // remove tea functionality 
+    // remove tea functionality
     const deleteTea = document.createElement("button");
-    deleteTea.textContent = "X"; // add an x symbol 
-    deleteTea.classList.add("delete-tea-btn"); 
-
+    deleteTea.textContent = "X"; // add an x symbol
+    deleteTea.classList.add("delete-tea-btn");
 
     deleteTea.addEventListener("click", () => {
       // remove the clicked tea from the array
-      myTeas.splice(index, 1); 
-      // update local storage 
+      myTeas.splice(index, 1);
+      // update local storage
       localStorage.setItem("myTeas", JSON.stringify(myTeas));
-      // refresh the UI 
+      // refresh the UI
       displayTeas();
-    })
+    });
 
-    // append delete btn to the tea div 
-    teaDiv.appendChild(deleteTea)
-    // append it to the cupboard 
+    // append delete btn to the tea div
+    teaDiv.appendChild(deleteTea);
+    // append it to the cupboard
     cupboard.appendChild(teaDiv);
-  })
+  });
 }
 
-// display teas when the page loads 
+// display teas when the page loads
 displayTeas();
-
 
 // add a tea functionality
 
@@ -170,56 +163,55 @@ if (submitNewTea) {
   submitNewTea.addEventListener("click", addNewTea);
 }
 
-function addNewTea(){
+function addNewTea() {
   const teaName = document.getElementById("NewTea").value;
-  console.log("Adding New Tea:", teaName)
+  console.log("Adding New Tea:", teaName);
 
   // avoid adding empty teas
   if (!teaName) return;
 
   // add tea to the array of teas with the push method
-  myTeas.push(teaName)
-  console.log("My Teas: ", myTeas)
+  myTeas.push(teaName);
+  console.log("My Teas: ", myTeas);
 
   // convert the array into a string using JSON.stringify() method
-  // & store in local storage 
-  console.log("storing teas in local storage")
-  localStorage.setItem("myTeas", JSON.stringify(myTeas))
+  // & store in local storage
+  console.log("storing teas in local storage");
+  localStorage.setItem("myTeas", JSON.stringify(myTeas));
 
   displayTeas();
- }
+}
 
-
- // share btn 
+// share btn
 
 const shareBtn = document.getElementById("shareBtn");
 if (shareBtn) {
   shareBtn.addEventListener("click", shareCupboard);
 }
 
-function shareCupboard(){
+function shareCupboard() {
   let cupboardName;
   // if there is a cupBoard name in local storage use it
   cupboardName = localStorage.getItem("cupboardName") || "The";
-  
+
   const myTeas = JSON.parse(localStorage.getItem("myTeas")) || [];
 
-  const shareableLink = `${window.location.origin}/newTeaCupboard.html?name=${encodeURIComponent(cupboardName)}&teas=${encodeURIComponent(JSON.stringify(myTeas))}`;
+  const shareableLink = `${
+    window.location.origin
+  }/newTeaCupboard.html?name=${encodeURIComponent(
+    cupboardName
+  )}&teas=${encodeURIComponent(JSON.stringify(myTeas))}`;
 
   // copy link to clipboard
-  navigator.clipboard.writeText(shareableLink).then(() => {
-    alert("Shareable link copied to clipboard!");
-  }).catch(err => console.error("Failed to copy:", err));
+  navigator.clipboard
+    .writeText(shareableLink)
+    .then(() => {
+      alert("Shareable link copied to clipboard!");
+    })
+    .catch((err) => console.error("Failed to copy:", err));
 }
 
-
-
-
-
-
-
-
- // const teas = [
+// const teas = [
 //   "Black Tea",
 //   "White Tea",
 //   "Green Tea",
@@ -233,7 +225,6 @@ function shareCupboard(){
 //   "Matcha",
 //   "Chai",
 // ];
-
 
 // add event listener method attaches an event handler to an element
 // we can add multiple event handleres to the same elemnt (ex: two "click" events)
