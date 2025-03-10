@@ -1,10 +1,10 @@
-// TODO : add effect for human winning 
-// TODO : add effect for computer winning 
-
 // design 
 let xDisplay = document.querySelector('#x-display')
 let oDisplay = document.querySelector('#o-display')
+const container = document.querySelector('.fireworks')
+const fireworks = new Fireworks.default(container)
 
+// game play 
 let boxes = document.querySelectorAll('.box') // selects all elements that have the class .box
 let winMessage = document.querySelector('#winner-message')
 let resetBtn = document.querySelector('#reset');
@@ -74,6 +74,7 @@ function checkWinner(){
             // see if there are three in a row of any symbol 
             boardState [zero] === boardState[one] &&
             boardState[one] === boardState[two]) {
+            fireworks.start()
             winMessage.innerText=`${currentPlayer} wins!`;
             resetBtn.classList.remove('hide');
             // disable boxes to stop further moves
@@ -101,6 +102,7 @@ function resetGame(){
         box.disabled = false;
         box.innerText= '';
     })
+    fireworks.stop();
     // TODO: comment out if we want the computer to have a chance at going first
     currentPlayer = 'X';
 }

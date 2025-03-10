@@ -125,6 +125,15 @@ h1 {
     box-shadow: inset 0 0 15px rgb(71, 249, 0), 0 0 25px rgb(71, 249, 0);
 }
 
+.fireworks{
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
 
 /* TODO:  */
 /* on hover, hover with the player's color  */
