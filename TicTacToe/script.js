@@ -15,10 +15,6 @@ let currentPlayer = 'X'
 
 
 
-// let playersTurn = document.querySelector('#players-turn')
-
-
-
 // TODO: set it up for computer to play 
 // computerTurn(){
 
