@@ -25,11 +25,15 @@ function checkWinner(){
         if (boardState[zero] !== '' && 
             boardState [zero] === boardState[one] &&
             boardState[one] === boardState[two])
-            alert(`${currentPlayer} wins!`)
+            document.getElementById('winner-message').innerText=`${currentPlayer} wins!`
     }
 }
 
-
+function checkTie(){
+    if (!boardState.includes('')){
+        document.getElementById('winner-message').innerText=`Tie game!`
+    }
+}
 
 boxes.forEach((box, index) => {
     box.addEventListener('click', function() {
@@ -39,10 +43,9 @@ boxes.forEach((box, index) => {
             console.log(boardState[0])
            box.innerText = currentPlayer // set the symbol (X or O)
            checkWinner(); // check for a winner
+           checkTie(); // check for a tie
            box.disabled = true // disable the box
            currentPlayer = currentPlayer === 'X' ? 'O' : 'X' // switch the player's turn dynamically
         }
     })
 })
-
-
