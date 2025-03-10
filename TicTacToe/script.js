@@ -1,22 +1,22 @@
+// TODO : add effect for human winning 
+// TODO : add effect for computer winning 
+
+// design 
+let xDisplay = document.querySelector('#x-display')
+let oDisplay = document.querySelector('#o-display')
 
 let boxes = document.querySelectorAll('.box') // selects all elements that have the class .box
 let winMessage = document.querySelector('#winner-message')
 let resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', resetGame)
 
-
 // start with player 1
 let currentPlayer = 'X'
 
-let playersTurn = document.querySelector('#players-turn')
-playersTurn.innerText = `X goes first`
 
 
-// TODO: add who's turn it is, X or O
+// let playersTurn = document.querySelector('#players-turn')
 
-
-// TODO : add effect for human winning 
-// TODO : add effect for computer winning 
 
 
 // TODO: set it up for computer to play 
@@ -28,24 +28,26 @@ playersTurn.innerText = `X goes first`
 // create a board state to track moves
 let boardState = ['', '', '', '', '', '', '', '', '']
 
+
 boxes.forEach((box, index) => {
     box.addEventListener('click', function() {
-        // check if box is empty 
-        if (box.innerText === '') {
+        if (box.innerText === '') {  // check if box is empty 
             boardState[index] = currentPlayer // update board state
-            console.log(boardState[0])
            box.innerText = currentPlayer // set the symbol (X or O)
            checkWinner(); // check for a winner
            checkTie(); // check for a tie
            box.disabled = true // disable the box
-           currentPlayer = currentPlayer === 'X' ? 'O' : 'X' // switch the player's turn dynamically
-           // update turn message 
-           playersTurn.innerText = `${currentPlayer === 'X' ? 'Your' : 'Computer'}'s turn`; 
-           if (currentPlayer === 'X'){
+           
+        if (currentPlayer === 'X') {
+            box.classList.remove('o-turn');
             box.classList.add('x-turn');
-           } else {
-            box.classList.add('o-turn')
-           }
+        } else {
+            box.classList.remove('x-turn');
+            box.classList.add('o-turn');
+        }
+
+           currentPlayer = currentPlayer === 'X' ? 'O' : 'X' // switch the player's turn dynamically
+           updateTurnDisplay(); // update the UI
 
         // TODO: set computer to be Player 2
         //    if (currentPlayer === 'O'){
@@ -107,3 +109,21 @@ function resetGame(){
     currentPlayer = 'X';
 }
 
+
+//design 
+function updateTurnDisplay() {
+    if (currentPlayer === 'X') {
+        oDisplay.classList.add('dim');
+        xDisplay.classList.remove('dim');
+        xDisplay.classList.add('x-glow');
+        oDisplay.classList.remove('o-glow');
+    } else {
+        xDisplay.classList.add('dim');
+        oDisplay.classList.remove('dim');
+        oDisplay.classList.add('o-glow');
+        xDisplay.classList.remove('x-glow');
+    }
+}
+
+// call this function at the start to apply initial styles
+updateTurnDisplay();

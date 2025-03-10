@@ -1,3 +1,9 @@
+:root{
+  --x-color: #007bff; 
+  --o-color: #ff073a;
+  --dim-color: rgba(255, 255, 255, 0.3);
+}
+
 /* universal selector: removes any default margin or padding  */
 * {
     margin: 0;
@@ -6,6 +12,12 @@
 
 body {
     text-align: center;
+    background-color: #121632;
+    color: white;
+}
+
+h1 {
+    padding: 40px;
 }
 
 .container {
@@ -24,7 +36,69 @@ body {
     justify-content: center;
 }
 
+.hide {
+    display: none;
+}
+
 .box {
+    background-color: #121632;
+    border-radius: 15px;
+    font-size: clamp(2rem, 8vw, 5rem);     /* min 2 rem, preferred 8vw, max 5 rem */
     height: 18vmin;
     width: 18vmin;
 }
+
+.x-turn{
+    color: var(--x-color);
+    text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
+}
+
+.o-turn{
+    color: var(--o-color);
+    text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
+} 
+
+#turn-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#x-display, #o-display{
+    font-size: clamp(2rem, 8vw, 5rem); 
+}
+
+#x-display{
+    color: var(--x-color);
+}
+
+#o-display{
+    color: var(--o-color);
+}
+
+.x-glow {
+    text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
+  }
+
+.o-glow {
+    text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
+  }
+
+
+.dim {
+    opacity: 0.3;
+    filter: blur(1px);
+    transition: opacity 0.3s ease-in-ut, filter 0.3s ease-in-out;
+}
+
+
+/* on hover, hover with the player's color  */
+
+
+
+
+
+
+
