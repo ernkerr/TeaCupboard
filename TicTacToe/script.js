@@ -83,15 +83,11 @@ function computerTurn() {
   let move;
 
   if (difficulty === "easy") {
-    // first approach
     move = generateRandomMove();
   } else if (difficulty === "medium") {
-    // second approach
     move = findWinningMove();
-  } else if (difficulty === "hard") {
-    // third approach
-  } else if (difficulty === "expert") {
-    // fourth approach
+  } else if (difficulty === "impossible") {
+    move = findBestMove();
   }
 
   if (move !== null) {
@@ -179,6 +175,88 @@ function findWinningMove() {
 
   // If no winning or blocking move, make a random move (easy mode)
   return generateRandomMove();
+}
+
+function findBestMove() {
+  // Initialize best score to negative infinity
+  let bestScore = -Infinity;
+  // store the index of the best move found
+  let bestMove = null;
+
+  // Try each available move
+  // loop through all 9 positions on the board
+  for (let i = 0; i < boardState.length; i++) {
+    // make sure the box is empty
+    if (boardState[i] === "") {
+      // Make the move
+      boardState[i] = "O";
+      // Calculate score for this move using minimax
+      let score = minimax(boardState, 0, false);
+      // Undo the move
+      boardState[i] = "";
+
+      // If this move results in a better score, update bestScore and bestMove
+      if (score > bestScore) {
+        bestScore = score;
+        bestMove = i;
+      }
+    }
+  }
+
+  return bestMove;
+}
+
+// Minimax algorithm implementation
+function minimax(board, depth, isMaximizing) {
+  // Check for terminal states (win, lose, tie)
+  let result = checkGameState(board);
+  if (result !== null) {
+    return result;
+  }
+
+  if (isMaximizing) {
+    // Computer's turn (O) - trying to maximize score
+    let bestScore = -Infinity;
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === "") {
+        board[i] = "O";
+        let score = minimax(board, depth + 1, false);
+        board[i] = "";
+        bestScore = Math.max(score, bestScore);
+      }
+    }
+    return bestScore;
+  } else {
+    // Player's turn (X) - trying to minimize score
+    let bestScore = Infinity;
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === "") {
+        board[i] = "X";
+        let score = minimax(board, depth + 1, true);
+        board[i] = "";
+        bestScore = Math.min(score, bestScore);
+      }
+    }
+    return bestScore;
+  }
+}
+
+// Helper function to check game state for minimax
+function checkGameState(board) {
+  // Check for a winner
+  for (let combo of winningCombinations) {
+    const [a, b, c] = combo;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      if (board[a] === "O") return 10; // Computer wins
+      if (board[a] === "X") return -10; // Player wins
+    }
+  }
+
+  // Check for a tie
+  if (!board.includes("")) return 0; // Tie game
+
+  // Game is still ongoing
+  return null;
 }
 
 function checkWinner() {

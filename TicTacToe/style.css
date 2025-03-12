@@ -1,152 +1,162 @@
-:root{
-  --x-color: #007bff; 
+:root {
+  --x-color: #007bff;
   --o-color: #ff073a;
   --dim-color: rgba(255, 255, 255, 0.3);
 }
 
 /* universal selector: removes any default margin or padding  */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    text-align: center;
-    background-color: #121632;
-    color: white;
-    font-family: "Poppins", sans-serif;
+  text-align: center;
+  background-color: #121632;
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
-    padding: 25px;
+  padding: 25px;
 }
 
-.message-container{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    gap: 40px;
+.message-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  gap: 40px;
 }
-
 
 .container {
-    height: 60dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 70px;
+  height: 60dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
 }
 
 .game {
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5vmin;
-    justify-content: center;
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5vmin;
+  justify-content: center;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .box {
-    background-color: #121632;
-    border-radius: 15px;
-    font-size: clamp(2rem, 8vw, 5rem);     /* min 2 rem, preferred 8vw, max 5 rem */
-    height: 18vmin;
-    width: 18vmin;
+  background-color: #121632;
+  border-radius: 15px;
+  font-size: clamp(2rem, 8vw, 5rem); /* min 2 rem, preferred 8vw, max 5 rem */
+  height: 18vmin;
+  width: 18vmin;
 }
 
-.x-turn{
-    color: var(--x-color);
-    text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
+.x-turn {
+  color: var(--x-color);
+  text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
 }
 
-.o-turn{
-    color: var(--o-color);
-    text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
-} 
-
-#turn-display{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+.o-turn {
+  color: var(--o-color);
+  text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
 }
 
-#x-display, #o-display{
-    font-size: clamp(2rem, 8vw, 5rem); 
+#turn-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-#x-display{
-    color: var(--x-color);
+#x-display,
+#o-display {
+  font-size: clamp(2rem, 8vw, 5rem);
 }
 
-#o-display{
-    color: var(--o-color);
+#x-display {
+  color: var(--x-color);
+}
+
+#o-display {
+  color: var(--o-color);
 }
 
 .x-glow {
-    text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
-  }
+  text-shadow: 0 0 15px var(--x-color), 0 0 25px var(--x-color);
+}
 
 .o-glow {
-    text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
-  }
-
+  text-shadow: 0 0 15px var(--o-color), 0 0 25px var(--o-color);
+}
 
 .dim {
-    opacity: 0.3;
-    filter: blur(1px);
-    transition: opacity 0.3s ease-in-ut, filter 0.3s ease-in-out;
+  opacity: 0.3;
+  filter: blur(1px);
+  transition: opacity 0.3s ease-in-ut, filter 0.3s ease-in-out;
 }
 
-#winner-message{
-    font-size: 20px;
-    font-size: clamp(2rem, 5vw, 2rem); 
+#winner-message {
+  font-size: 20px;
+  font-size: clamp(2rem, 5vw, 2rem);
 }
 
-#reset{
-    cursor: pointer;
-    color: white;
-    background-color: #121632;
-    font-family: "Poppins", sans-serif;
-    font-size: clamp(1rem, 5vw, 1.2rem); 
-    padding: 10px 20px; 
-    border: rgb(71, 249, 0) 2px solid;
-    border-radius: 15px;
-    box-shadow: inset 0 0 15px rgb(71, 249, 0), 0 0 25px rgb(71, 249, 0);
+#reset {
+  cursor: pointer;
+  color: white;
+  background-color: #121632;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 5vw, 1.2rem);
+  padding: 10px 20px;
+  border: rgb(71, 249, 0) 2px solid;
+  border-radius: 15px;
+  box-shadow: inset 0 0 15px rgb(71, 249, 0), 0 0 25px rgb(71, 249, 0);
 }
 
-.fireworks{
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
+.fireworks {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
 }
 
-.difficulty-selector{
-    display: flex;
-    flex-direction: column;
+.difficulty-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
 }
 
+#difficulty {
+  cursor: pointer;
+  color: white;
+  background-color: #121632;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  width: 200px;
+  margin-bottom: 50px;
+  text-align: center;
+}
 
-/* TODO:  */
-/* on hover, hover with the player's color  */
-/* mouse in and out events?  */
-
-
-
-
-
-
-
+#difficulty option {
+  background-color: #121632;
+  color: white;
+}
