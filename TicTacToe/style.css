@@ -134,6 +134,11 @@ h1 {
     pointer-events: none;
 }
 
+.difficulty-selector{
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* TODO:  */
 /* on hover, hover with the player's color  */
