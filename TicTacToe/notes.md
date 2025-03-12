@@ -20,29 +20,7 @@ approach 1: "easy" choose a random box
 
 approach 2: "medium" checks for winning move
 
-1. OPTION A: Checks for ANY winning move 
-
-            function findBestMove() {
-            for (let combo of winningCombinations) {
-                const [a, b, c] = combo;
-
-                // Check if one of the spots is empty and the other two are the same (either "O" or "X")
-                if (boardState[a] === "" && boardState[b] === boardState[c] && boardState[b] !== "") {
-                return a; // Move here to win or block the player
-                }
-                if (boardState[b] === "" && boardState[a] === boardState[c] && boardState[a] !== "") {
-                return b; // Move here to win or block the player
-                }
-                if (boardState[c] === "" && boardState[a] === boardState[b] && boardState[a] !== "") {
-                return c; // Move here to win or block the player
-                }
-            }
-
-            // If no winning or blocking move, make a random move (easy mode)
-            return generateRandomMove();
-            }
-
-2. OPTION B: Check if the computer can win first, then tries to block player 1
+1. Check if the computer can win first
 
             function findWinningMove(){
                 for (let combo of winningCombinations) {
@@ -76,6 +54,4 @@ approach 2: "medium" checks for winning move
         return generateRandomMove();
         }
 
-approach 3: "hard" 
-- API call to a LLM
-- minimax algorithm 
+approach 3: "hard" minimax algorithm 

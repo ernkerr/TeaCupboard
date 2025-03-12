@@ -24,17 +24,17 @@ difficultySelect.addEventListener("change", function () {
   console.log("Difficulty set to:", difficulty);
 });
 
-// make winningCombinations into a global variable 
+// make winningCombinations into a global variable
 const winningCombinations = [
-    [0, 1, 2], // Row 1
-    [3, 4, 5], // Row 2
-    [6, 7, 8], // Row 3
-    [0, 3, 6], // Column 1
-    [1, 4, 7], // Column 2
-    [2, 5, 8], // Column 3
-    [0, 4, 8], // Diagonal 1
-    [2, 4, 6], // Diagonal 2
-  ];
+  [0, 1, 2], // Row 1
+  [3, 4, 5], // Row 2
+  [6, 7, 8], // Row 3
+  [0, 3, 6], // Column 1
+  [1, 4, 7], // Column 2
+  [2, 5, 8], // Column 3
+  [0, 4, 8], // Diagonal 1
+  [2, 4, 6], // Diagonal 2
+];
 
 // start with player 1
 let currentPlayer = "X";
@@ -76,17 +76,18 @@ boxes.forEach((box, index) => {
 // CHANGES TO MENTION!
 //
 // Thought it would be nice if we could return "move" from the functions we make
-// then we could execute the computer's turn here instead of in each function 
+// then we could execute the computer's turn here instead of in each function
 
 // TODO: set it up for computer to play
 function computerTurn() {
   let move;
 
   if (difficulty === "easy") {
-    // first approach 
-    // move = generateRandomMove();
+    // first approach
+    move = generateRandomMove();
   } else if (difficulty === "medium") {
     // second approach
+    move = findWinningMove();
   } else if (difficulty === "hard") {
     // third approach
   } else if (difficulty === "expert") {
@@ -98,7 +99,7 @@ function computerTurn() {
     boxes[move].classList.remove("x-turn");
     boxes[move].classList.add("o-turn");
 
-    // execute the computer's turn 
+    // execute the computer's turn
     boardState[move] = "O";
     boxes[move].innerText = "O";
     boxes[move].disabled = true;
@@ -109,7 +110,76 @@ function computerTurn() {
   }
 }
 
+function generateRandomMove() {
+  let emptyIndexes = [];
+  // loop through board state & add empty indexes to the array
+  boardState.forEach((value, index) => {
+    if (value === "") {
+      emptyIndexes.push(index);
+    }
+  });
 
+  // generate random index
+  let randomIndex = Math.floor(Math.random() * emptyIndexes.length);
+
+  return emptyIndexes[randomIndex];
+}
+
+function findWinningMove() {
+  for (let combo of winningCombinations) {
+    const [zero, one, two] = combo;
+
+    // Check for a potential winning move for the computer ("O")
+
+    if (
+      boardState[zero] === "O" &&
+      boardState[one] === "O" &&
+      boardState[two] === ""
+    ) {
+      return two; // Computer can win here
+    }
+    if (
+      boardState[zero] === "O" &&
+      boardState[two] === "O" &&
+      boardState[one] === ""
+    ) {
+      return one; // Computer can win here
+    }
+    if (
+      boardState[one] === "O" &&
+      boardState[two] === "O" &&
+      boardState[zero] === ""
+    ) {
+      return zero; // Computer can win here
+    }
+
+    // Check for a potential blocking move for the player ("X")
+    if (
+      boardState[zero] === "X" &&
+      boardState[one] === "X" &&
+      boardState[two] === ""
+    ) {
+      return two; // Block player from winning here
+    }
+    if (
+      boardState[zero] === "X" &&
+      boardState[two] === "X" &&
+      boardState[one] === ""
+    ) {
+      return one; // Block player from winning here
+    }
+    if (
+      boardState[one] === "X" &&
+      boardState[two] === "X" &&
+      boardState[zero] === ""
+    ) {
+      return zero; // Block player from winning here
+    }
+  }
+
+  // If no winning or blocking move, make a random move (easy mode)
+  return generateRandomMove();
+}
 
 function checkWinner() {
   // check all winning combinations
