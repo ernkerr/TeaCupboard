@@ -37,6 +37,5 @@ for (let i = 1; i <= 100; i++) {
     console.log(i); // print the number
   }
 }
-console.log("That's all folks!");
 
 // node CracklePop.js

@@ -10,10 +10,6 @@ let winMessage = document.querySelector("#winner-message");
 let resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", resetGame);
 
-//
-// CHANGES TO MENTION!
-//
-
 // let user select a difficulty level
 let difficulty = "easy";
 const difficultySelect = document.getElementById("difficulty");
@@ -72,13 +68,6 @@ boxes.forEach((box, index) => {
   });
 });
 
-//
-// CHANGES TO MENTION!
-//
-// Thought it would be nice if we could return "move" from the functions we make
-// then we could execute the computer's turn here instead of in each function
-
-// TODO: set it up for computer to play
 function computerTurn() {
   let move;
 
@@ -126,7 +115,6 @@ function findWinningMove() {
     const [zero, one, two] = combo;
 
     // Check for a potential winning move for the computer ("O")
-
     if (
       boardState[zero] === "O" &&
       boardState[one] === "O" &&
